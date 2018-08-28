@@ -1,4 +1,4 @@
-import {Component} React from 'react';
+import React, {Component} from 'react';
 
 class BookShelves extends Component {
 
