@@ -8,9 +8,9 @@ class Book extends Component {
             <li>
                 <div className="book">
                     <div className="book-top">
-                        // TODO: create separate component for book cover that also has a default placeholder if image not available
+                        {/* TODO: create separate component for book cover that also has a default placeholder if image not available */}
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${data.imageLinks.thumbnail}")` }}></div>
-                        // TODO create book shelf changer component
+                        {/* TODO create book shelf changer component */}
                         <div className="book-shelf-changer">
                             <select>
                                 <option value="move" disabled>Move to...</option>
