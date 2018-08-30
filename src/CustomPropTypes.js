@@ -12,11 +12,5 @@ export const bookPropType = PropTypes.shape({
     shelf: PropTypes.string.isRequired
 });
 
-export const shelfPropType = PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    books: PropTypes.arrayOf(bookPropType).isRequired
-});
-
 
 
