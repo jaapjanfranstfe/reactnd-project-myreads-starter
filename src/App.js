@@ -16,16 +16,18 @@ class BooksApp extends Component {
         BooksAPI.update(book, shelf)
             .then(() => {
                 this.setState((prevState) => {
-                    const books = prevState.books.filter(listedBook => listedBook.id !== book.id);
-
+                    const filteredBooks = prevState.books.filter(listedBook => listedBook.id !== book.id);
 
                     if(shelf !== Constant.SHELF_ID_NONE) {
-                        book.shelf = shelf;
-                        books.push(book);
+                        const bookCopy = {
+                            ...book,
+                            shelf: shelf};
+
+                        filteredBooks.push(bookCopy);
                     }
 
                     return {
-                        books: books
+                        books: filteredBooks
                     };
                 });
             });
