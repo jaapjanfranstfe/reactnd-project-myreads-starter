@@ -1,11 +1,32 @@
 import React, { Component } from 'react'
-import {Link} from "react-router-dom";
-import Bookshelf from "./Bookshelf";
+import {Link} from 'react-router-dom';
+import Bookshelf from './Bookshelf';
+import PropTypes from 'prop-types';
+import { bookPropType } from './CustomPropTypes'
+import * as Constant from './Constants';
 
 class ListBooks extends Component {
 
     render() {
-        const { shelves } = this.props;
+        const { books, onSelectShelf } = this.props;
+
+        const current = {
+            id: Constant.SHELF_ID_CURRENTLY_READING,
+            title: Constant.SHELF_TITLE_CURRENTLY_READING,
+            books: books.filter((book) => book.shelf === Constant.SHELF_ID_CURRENTLY_READING)
+        };
+
+        const want = {
+            id: Constant.SHELF_ID_WANT_TO_READ,
+            title: Constant.SHELF_TITLE_WANT_TO_READ,
+            books: books.filter((book) => book.shelf === Constant.SHELF_ID_WANT_TO_READ)
+        };
+
+        const read = {
+            id: Constant.SHELF_ID_READ,
+            title: Constant.SHELF_TITLE_READ,
+            books: books.filter((book) => book.shelf === Constant.SHELF_ID_READ)
+        };
 
         return (
             <div className="list-books">
@@ -14,9 +35,9 @@ class ListBooks extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        {shelves.map((shelf) => (
-                            <Bookshelf key={shelf.id} title={shelf.title} books={shelf.books}/>
-                        ))}
+                        <Bookshelf title={current.title} books={current.books} onSelectShelf={onSelectShelf}/>
+                        <Bookshelf title={want.title} books={want.books} onSelectShelf={onSelectShelf}/>
+                        <Bookshelf title={read.title} books={read.books} onSelectShelf={onSelectShelf}/>
                     </div>
                 </div>
                 <div className="open-search">
@@ -27,5 +48,10 @@ class ListBooks extends Component {
         );
     }
 }
+
+ListBooks.propTypes = {
+    books: PropTypes.arrayOf(bookPropType).isRequired,
+    onSelectShelf: PropTypes.func.isRequired
+};
 
 export default ListBooks;

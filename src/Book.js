@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
+import { bookPropType} from './CustomPropTypes';
+import PropTypes from 'prop-types';
+import ShelfSelect from './ShelfSelect';
 
 class Book extends Component {
+
+    handleShelfChange = (shelf) => {
+        this.props.onSelectShelf(this.props.data, shelf);
+    };
 
     render() {
         const { data } = this.props;
@@ -10,16 +17,7 @@ class Book extends Component {
                     <div className="book-top">
                         {/* TODO: create separate component for book cover that also has a default placeholder if image not available */}
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${data.imageLinks.thumbnail}")` }}></div>
-                        {/* TODO create book shelf changer component */}
-                        <div className="book-shelf-changer">
-                            <select>
-                                <option value="move" disabled>Move to...</option>
-                                <option value="currentlyReading">Currently Reading</option>
-                                <option value="wantToRead">Want to Read</option>
-                                <option value="read">Read</option>
-                                <option value="none">None</option>
-                            </select>
-                        </div>
+                        <ShelfSelect selectedValue={data.shelf} onSelectShelf={this.handleShelfChange}/>
                     </div>
                     <div className="book-title">{data.title}</div>
                     <div className="book-authors">{data.authors.join(', ')}</div>
@@ -28,5 +26,10 @@ class Book extends Component {
         );
     }
 }
+
+Book.propTypes = {
+    data: bookPropType,
+    onSelectShelf: PropTypes.func.isRequired
+};
 
 export default Book;

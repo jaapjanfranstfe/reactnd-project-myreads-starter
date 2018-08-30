@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
 import Book from './Book'
+import { bookPropType } from "./CustomPropTypes";
+import PropTypes from "prop-types";
 
 class Bookshelf extends Component {
 
     render() {
-        const { title, books } = this.props;
+        const { title, books, onSelectShelf } = this.props;
         return (
             <div className="bookshelf">
                 <h2 className="bookshelf-title">{title}</h2>
                 <div className="bookshelf-books">
                     <ol className="books-grid">
                         {books.map((book) => (
-                            <Book key={book.id} data={book} />
+                            <Book key={book.id} data={book} onSelectShelf={onSelectShelf}/>
                         ))}
                     </ol>
                 </div>
@@ -19,5 +21,11 @@ class Bookshelf extends Component {
         );
     }
 }
+
+Bookshelf.propTypes = {
+    title: PropTypes.string.isRequired,
+    books: PropTypes.arrayOf(bookPropType).isRequired,
+    onSelectShelf: PropTypes.func.isRequired
+};
 
 export default Bookshelf;
