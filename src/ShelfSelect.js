@@ -17,7 +17,7 @@ class ShelfSelect extends Component {
                     <option value={Constant.SHELF_ID_CURRENTLY_READING}>{Constant.SHELF_TITLE_CURRENTLY_READING}</option>
                     <option value={Constant.SHELF_ID_WANT_TO_READ}>{Constant.SHELF_TITLE_WANT_TO_READ}</option>
                     <option value={Constant.SHELF_ID_READ}>{Constant.SHELF_TITLE_READ}</option>
-                    <option value={Constant.SHELF_ID_NONE}>{Constant.SHELF_TITLE_READ}</option>
+                    <option value={Constant.SHELF_ID_NONE}>{Constant.SHELF_TITLE_NONE}</option>
                 </select>
             </div>
         );
