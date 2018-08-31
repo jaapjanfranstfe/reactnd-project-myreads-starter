@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom";
-import * as BooksAPI from './BooksAPI';
+import * as BooksAPI from '../BooksAPI';
 import { debounce } from "debounce";
 import PropTypes from "prop-types";
-import {bookPropType} from "./CustomPropTypes";
+import {bookPropType} from "../CustomPropTypes";
 import ListBooks from "./ListBooks";
 import Bookshelf from "./Bookshelf";
 

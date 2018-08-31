@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import Book from './Book'
-import { bookPropType } from "./CustomPropTypes";
+import { bookPropType } from "../CustomPropTypes";
 import PropTypes from "prop-types";
 
 class Bookshelf extends Component {
 
     render() {
         const { title, books, onSelectShelf } = this.props;
+        const sortedBooks = books.sort((a, b) => a.title.localeCompare(b.title));
+
         return (
             <div className="bookshelf">
                 {title &&
@@ -15,7 +17,7 @@ class Bookshelf extends Component {
 
                 <div className="bookshelf-books">
                     <ol className="books-grid">
-                        {books.map((book) => (
+                        {sortedBooks.map((book) => (
                             <Book key={book.id} data={book} onSelectShelf={onSelectShelf}/>
                         ))}
                     </ol>

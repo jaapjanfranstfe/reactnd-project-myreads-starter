@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import { bookPropType} from './CustomPropTypes';
+import { bookPropType} from '../CustomPropTypes';
 import PropTypes from 'prop-types';
 import ShelfSelect from './ShelfSelect';
-import * as Constant from './Constants';
+import * as Constant from '../Constants';
 
 class Book extends Component {
 

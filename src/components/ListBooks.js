@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 import Bookshelf from './Bookshelf';
 import PropTypes from 'prop-types';
-import { bookPropType } from './CustomPropTypes'
-import * as Constant from './Constants';
+import { bookPropType } from '../CustomPropTypes'
+import * as Constant from '../Constants';
 
 class ListBooks extends Component {
 
