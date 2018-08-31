@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
-import {Link} from "react-router-dom";
+import React, { Component } from 'react';
 import * as BooksAPI from '../BooksAPI';
-import { debounce } from "debounce";
 import PropTypes from "prop-types";
 import {bookPropType} from "../CustomPropTypes";
 import ListBooks from "./ListBooks";
 import Bookshelf from "./Bookshelf";
+import Searchbar from "./Searchbar";
 
 class SearchBooks extends Component {
 
@@ -13,7 +12,7 @@ class SearchBooks extends Component {
         searchResults: []
     };
 
-    handleSearch = debounce((query) => {
+    handleSearch = (query) => {
         if(query === '') {
             this.setState({
                 searchResults: []
@@ -25,6 +24,8 @@ class SearchBooks extends Component {
                         results = [];
                     }
 
+                    // make sure search results books that are already on a shelf of the user
+                    // get updated with the same shelf
                     results.forEach(searchResultBook => {
                         const book = this.props.books.find(book => book.id === searchResultBook.id);
                         if (book) {
@@ -37,20 +38,14 @@ class SearchBooks extends Component {
                     });
                 });
         }
-    }, 200);
+    };
 
     render() {
         const { searchResults } = this.state;
         const { onSelectShelf } = this.props;
         return (
             <div className="search-books">
-                <div className="search-books-bar">
-                    <Link to='/' className="close-search">Close</Link>
-                    <div className="search-books-input-wrapper">
-                        <input type="text" placeholder="Search by title or author" onChange={(event) => this.handleSearch(event.target.value)}/>
-
-                    </div>
-                </div>
+                <Searchbar onQueryChanged={this.handleSearch} />
                 <div className="search-books-results">
                     <ol className="books-grid">
                         <Bookshelf books={searchResults} onSelectShelf={onSelectShelf}/>
