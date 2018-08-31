@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { bookPropType} from './CustomPropTypes';
 import PropTypes from 'prop-types';
 import ShelfSelect from './ShelfSelect';
+import * as Constant from './Constants';
 
 class Book extends Component {
 
@@ -11,12 +12,19 @@ class Book extends Component {
 
     render() {
         const { data } = this.props;
+        let thumbnailUrl;
+
+        if(data.imageLinks && data.imageLinks.thumbnail) {
+            thumbnailUrl = data.imageLinks.thumbnail;
+        } else {
+            thumbnailUrl = Constant.NO_THUMBNAIL_PLACEHOLDER;
+        }
+
         return (
             <li>
                 <div className="book">
                     <div className="book-top">
-                        {/* TODO: create separate component for book cover that also has a default placeholder if image not available */}
-                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${data.imageLinks.thumbnail}")` }}></div>
+                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${thumbnailUrl}")` }}></div>
                         <ShelfSelect selectedValue={data.shelf} onSelectShelf={this.handleShelfChange}/>
                     </div>
                     <div className="book-title">{data.title}</div>
