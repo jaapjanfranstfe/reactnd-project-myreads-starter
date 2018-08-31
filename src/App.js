@@ -50,7 +50,7 @@ class BooksApp extends Component {
                     <ListBooks books={this.state.books} onSelectShelf={this.handleShelfChange}/>
                 )}/>
                 <Route path='/search' render={() => (
-                    <SearchBooks/>
+                    <SearchBooks books={this.state.books} onSelectShelf={this.handleShelfChange} />
                 )}/>
             </div>
         )

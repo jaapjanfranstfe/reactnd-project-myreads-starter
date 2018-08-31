@@ -9,8 +9,11 @@ class ShelfSelect extends Component {
     };
 
     render() {
-        const {selectedValue} = this.props;
+        let {selectedValue} = this.props;
 
+        if(!selectedValue) {
+            selectedValue = Constant.SHELF_ID_NONE;
+        }
         return (
             <div className="book-shelf-changer">
                 <select defaultValue={selectedValue} onChange={this.handleValueChange}>
@@ -25,7 +28,7 @@ class ShelfSelect extends Component {
 }
 
 ShelfSelect.propTypes = {
-    selectedValue: PropTypes.string.isRequired,
+    selectedValue: PropTypes.string,
     onSelectShelf: PropTypes.func.isRequired
 };
 

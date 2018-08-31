@@ -9,7 +9,10 @@ class Bookshelf extends Component {
         const { title, books, onSelectShelf } = this.props;
         return (
             <div className="bookshelf">
-                <h2 className="bookshelf-title">{title}</h2>
+                {title &&
+                    <h2 className="bookshelf-title">{title}</h2>
+                }
+
                 <div className="bookshelf-books">
                     <ol className="books-grid">
                         {books.map((book) => (
@@ -23,7 +26,7 @@ class Bookshelf extends Component {
 }
 
 Bookshelf.propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     books: PropTypes.arrayOf(bookPropType).isRequired,
     onSelectShelf: PropTypes.func.isRequired
 };

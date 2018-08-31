@@ -7,9 +7,9 @@ export const imageLinksPropType = PropTypes.shape({
 
 export const bookPropType = PropTypes.shape({
     title: PropTypes.string.isRequired,
-    authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+    authors: PropTypes.arrayOf(PropTypes.string),
     imageLinks: imageLinksPropType.isRequired,
-    shelf: PropTypes.string.isRequired
+    shelf: PropTypes.string
 });
 
 

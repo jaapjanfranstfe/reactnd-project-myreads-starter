@@ -20,7 +20,9 @@ class Book extends Component {
                         <ShelfSelect selectedValue={data.shelf} onSelectShelf={this.handleShelfChange}/>
                     </div>
                     <div className="book-title">{data.title}</div>
-                    <div className="book-authors">{data.authors.join(', ')}</div>
+                    { data.authors &&
+                        <div className="book-authors">{data.authors.join(', ')}</div>
+                    }
                 </div>
             </li>
         );
