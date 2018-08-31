@@ -19,7 +19,7 @@ class SearchBooks extends Component {
                 searchResults: []
             });
         } else {
-            BooksAPI.search(query)
+            BooksAPI.search(query.trim())
                 .then((results) => {
                     if (!Array.isArray(results)) {
                         results = [];
