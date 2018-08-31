@@ -1,8 +1,10 @@
+export const SHELF_ID_MOVE = "none";
 export const SHELF_ID_CURRENTLY_READING = "currentlyReading";
 export const SHELF_ID_WANT_TO_READ = "wantToRead";
 export const SHELF_ID_READ = "read";
 export const SHELF_ID_NONE = "none";
 
+export const SHELF_TITLE_MOVE = "Move to...";
 export const SHELF_TITLE_CURRENTLY_READING = "Currently Reading";
 export const SHELF_TITLE_WANT_TO_READ = "Want to Read";
 export const SHELF_TITLE_READ = "Read";
